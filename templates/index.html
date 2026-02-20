@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern PDF Toolkit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1>Modern PDF Toolkit</h1>
+      <p>All-in-one PDF tools with modern UI</p>
+    </header>
+
+    <main class="grid">
+      <section class="card"><h2>Merge PDF</h2><form action="/merge" method="post" enctype="multipart/form-data"><input type="file" name="pdfs" accept="application/pdf" multiple required><button>Merge</button></form></section>
+      <section class="card"><h2>Split PDF</h2><form action="/split" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><input type="text" name="pages" placeholder="1,3,5-7"><button>Split</button></form></section>
+      <section class="card"><h2>Rotate PDF</h2><form action="/rotate" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><select name="angle"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select><button>Rotate</button></form></section>
+      <section class="card"><h2>Page numbers</h2><form action="/page_numbers" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><select name="position"><option value="bottom">Bottom</option><option value="top">Top</option></select><button>Add Page Numbers</button></form></section>
+      <section class="card"><h2>Watermark (text/image)</h2><form action="/watermark" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><select name="mode"><option value="text">Text</option><option value="image">Image</option></select><input type="text" name="text" placeholder="Watermark Text"><input type="file" name="image" accept="image/*"><button>Add Watermark</button></form></section>
+      <section class="card"><h2>Protect PDF</h2><form action="/protect" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><input type="password" name="password" placeholder="Set password" required><button>Protect</button></form></section>
+      <section class="card"><h2>Unlock PDF</h2><form action="/unlock" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><input type="password" name="password" placeholder="Known password" required><button>Unlock</button></form></section>
+      <section class="card"><h2>Organize PDF</h2><form action="/organize" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><input type="text" name="order" placeholder="Reorder/Delete e.g. 3,1,2"><button>Organize</button></form></section>
+      <section class="card"><h2>Image to PDF</h2><form action="/image_to_pdf" method="post" enctype="multipart/form-data"><input type="file" name="images" accept="image/*" multiple required><button>Convert</button></form></section>
+      <section class="card"><h2>PDF to image</h2><form action="/pdf_to_image" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><button>Convert</button></form></section>
+      <section class="card"><h2>Crop PDF</h2><form action="/crop" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><input type="number" name="margin" placeholder="Margin px" min="1" value="10"><button>Crop</button></form></section>
+      <section class="card"><h2>Compress PDF</h2><form action="/compress" method="post" enctype="multipart/form-data"><input type="file" name="pdf" accept="application/pdf" required><select name="target_kb"><option>30</option><option>50</option><option selected>100</option><option>200</option><option>300</option><option>500</option></select><input type="number" name="manual_kb" placeholder="Manual target size (KB)"><button>Compress</button></form></section>
+    </main>
+  </body>
+</html>
